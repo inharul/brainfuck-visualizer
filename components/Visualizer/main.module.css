@@ -71,11 +71,11 @@
   font-size: 1.3rem;
   resize: none;
   padding: 1rem;
-  flex: 0.7;
+  flex: 0.6;
 }
 .rightContainer {
-  border: 1px solid #181818;
-  flex: 0.3;
+  border: 1px solid #4b4b4b;
+  flex: 0.4;
   /* padding: 1rem; */
   font-weight: 600;
   font-size: 1.5rem;

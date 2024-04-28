@@ -1,5 +1,7 @@
 "use client";
 import { ChangeEvent, useEffect, useState } from "react";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 import { produce } from "immer";
 import styles from "./main.module.css";
 import ui from "../ui/ui.module.css";
@@ -19,14 +21,19 @@ const Main = () => {
   const [progress, setProgress] = useState(0);
 
   const [inputValue, setinputValue] = useState("");
-  const resetProgram = () => {
-    setMemory(new Array(300).fill(0));
-    console.log(memory);
+  const { width, height } = useWindowSize();
+  // const resetProgram = () => {
+  //   setMemory(new Array(300).fill(0));
+  //   console.log(memory);
 
-    setPointer(0);
-    setOutput("");
-    setProgress(0);
-  };
+  //   setPointer(0);
+  //   setOutput("");
+  //   setProgress(0);
+  // };
+  useEffect(() => {
+    if (output.length == 18) setOpen(true);
+  }, [output]);
+
   const cleanup = (code: string): string => {
     return code
       .split("")
@@ -65,6 +72,7 @@ const Main = () => {
   };
 
   const runProgram = (code: string): void => {
+    setStop(true);
     code = cleanup(code);
     let commandsPointer: number = 0;
     const bracemap: { [key: number]: number } = buildBracemap(code);
@@ -117,7 +125,7 @@ const Main = () => {
         console.log("finished command", command);
         console.log("memory pointer", x, "memory value", memory[x]);
 
-        setTimeout(() => runNextCommand(x, memory), 500);
+        setTimeout(() => runNextCommand(x, memory), 300);
       }
     };
     runNextCommand(pointer, memory);
@@ -162,11 +170,12 @@ const Main = () => {
           name="code"
           className={styles.codeArea}
           value={code}
+          placeholder="Write or paste your code here..."
           onChange={(e) => setCode(e.target.value)}
         />
         <section className={styles.rightContainer}>
           <button
-            // disabled={true}
+            disabled={stop}
             className={ui.runButton}
             onClick={() => {
               runProgram(code);
@@ -214,7 +223,7 @@ const Main = () => {
 
       {/* <h1>{output}</h1> */}
 
-      {open ? (
+      {/* {open ? (
         <div className={ui.inputModal}>
           <h1>Input</h1>
           <span>Enter any [one] character from keyboard </span>
@@ -223,7 +232,8 @@ const Main = () => {
         </div>
       ) : (
         <></>
-      )}
+      )} */}
+      {open ? <Confetti width={width} height={height} /> : <></>}
     </div>
   );
 };

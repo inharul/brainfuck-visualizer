@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Brainfuck Visualizer",
   description:
-    "A Visualizer that interprets brainfuck code and breaks it down.",
+    "A modern brainfuck visual interpreter that breaks down brainfuck code",
 };
 
 export default function RootLayout({

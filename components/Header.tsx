@@ -12,7 +12,9 @@ const Header = () => {
       </section>
       <section className={header.flex}>
         <div className={header.highWidthContainer}>
-          <p>Who made it?</p>
+          <p>
+            from {"<"}inharul{">"}
+          </p>
         </div>
         <div className={header.lowWidthContainer}>
           <section className={header.flex}>

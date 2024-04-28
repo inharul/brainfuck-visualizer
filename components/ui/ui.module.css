@@ -81,6 +81,13 @@
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
 }
 
+.runButton:disabled {
+  opacity: 0.5;
+  user-select: none;
+}
+.runButton:disabled:hover {
+  transform: none;
+}
 .runButton:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
