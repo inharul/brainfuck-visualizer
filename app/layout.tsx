@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Brainfuck Visualizer - Inharul",
+  title: "Brainfuck Visualizer",
   description:
     "A Visualizer that interprets brainfuck code and breaks it down.",
 };

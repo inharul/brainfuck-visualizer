@@ -5,7 +5,9 @@ import styles from "./main.module.css";
 import ui from "../ui/ui.module.css";
 import Image from "next/image";
 import caret from "@/public/caret.svg";
+import run from "@/public/run.svg";
 import * as Progress from "@radix-ui/react-progress";
+import * as Slider from "@radix-ui/react-slider";
 const Main = () => {
   const [memory, setMemory] = useState<number[]>(new Array(300).fill(0));
   const [pointer, setPointer] = useState(0);
@@ -110,10 +112,12 @@ const Main = () => {
         if (command === "]" && memory[x] !== 0) {
           commandsPointer = bracemap[commandsPointer];
         }
+        setProgress((commandsPointer / code.length) * 100);
         commandsPointer++;
         console.log("finished command", command);
         console.log("memory pointer", x, "memory value", memory[x]);
-        setTimeout(() => runNextCommand(x, memory), 100);
+
+        setTimeout(() => runNextCommand(x, memory), 500);
       }
     };
     runNextCommand(pointer, memory);
@@ -160,24 +164,51 @@ const Main = () => {
           value={code}
           onChange={(e) => setCode(e.target.value)}
         />
-        <section className={styles.codeOutput}>
+        <section className={styles.rightContainer}>
           <button
+            // disabled={true}
+            className={ui.runButton}
             onClick={() => {
-              resetProgram();
               runProgram(code);
             }}
           >
+            <Image
+              src={run}
+              alt="run code"
+              style={{
+                height: 32,
+                width: 32,
+                marginRight: 5,
+              }}
+            />
             Run
           </button>
-          <button onClick={() => setStop(!stop)}>Stop</button>
+          {/* <button onClick={() => setStop(!stop)}>Stop</button> */}
           <Progress.Root className={ui.ProgressRoot} value={progress}>
             <Progress.Indicator
               className={ui.ProgressIndicator}
               style={{ transform: `translateX(-${100 - progress}%)` }}
             />
           </Progress.Root>
+          {/* <div className={ui.block}>
+            <Slider.Root
+              className={ui.SliderRoot}
+              onValueChange={(e) => console.log(e)}
+              defaultValue={[50]}
+              max={100}
+              min={0.1}
+              step={0.1}
+            >
+              <Slider.Track className={ui.SliderTrack}>
+                <Slider.Range className={ui.SliderRange} />
+              </Slider.Track>
+              <Slider.Thumb className={ui.SliderThumb} aria-label="Volume" />
+            </Slider.Root>
+          </div> */}
 
-          <p>{output}</p>
+          <section className={styles.outputContainer}>
+            <p>{output}</p>
+          </section>
         </section>
       </div>
 

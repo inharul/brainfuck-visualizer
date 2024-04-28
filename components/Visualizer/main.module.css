@@ -63,21 +63,31 @@
   display: flex;
 }
 .codeArea {
-  height: 30vh;
+  min-height: 40vh;
   border: 1px solid gray;
   background-color: transparent;
   outline: none;
   color: #fff;
   font-size: 1.3rem;
+  resize: none;
   padding: 1rem;
   flex: 0.7;
 }
-.codeOutput {
-  border: 1px solid #fff;
+.rightContainer {
+  border: 1px solid #181818;
   flex: 0.3;
   /* padding: 1rem; */
   font-weight: 600;
   font-size: 1.5rem;
+}
+
+.outputContainer {
+  padding: 0.5rem;
+  min-height: 3rem;
+  border: 1px solid #181818;
+  margin: 0.5rem;
+  background-color: #2424242e;
+  /* border-radius: 7px; */
 }
 
 @media (max-width: 768px) {

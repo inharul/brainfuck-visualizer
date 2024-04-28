@@ -33,16 +33,73 @@
   }
 }
 
+.block {
+  display: block;
+}
+
+.runButton {
+  display: flex;
+  padding: 0.4rem;
+  align-items: center;
+}
+
+.runButton {
+  align-items: center;
+  appearance: none;
+  margin: 1rem;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.runButton:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.runButton:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.runButton:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
 .ProgressRoot {
   position: relative;
   overflow: hidden;
   background: gray;
-  /* border-radius: 99999px; */
   width: 100%;
   height: 4px;
 
   /* Fix overflow clipping in Safari */
-  /* https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0 */
   transform: translateZ(0);
 }
 
@@ -51,4 +108,41 @@
   width: 100%;
   height: 100%;
   transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 200px;
+  height: 20px;
+}
+
+.SliderTrack {
+  background-color: gray;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 3px;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: white;
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.SliderThumb {
+  display: block;
+  width: 17px;
+  height: 17px;
+  background-color: white;
+  box-shadow: 0 2px 10px var(--black-a7);
+  border-radius: 10px;
+}
+.SliderThumb:hover {
+  background-color: var(--violet-3);
 }
